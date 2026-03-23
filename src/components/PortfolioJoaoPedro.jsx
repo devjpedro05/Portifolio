@@ -17,6 +17,10 @@ const fotoPerfilSrc = fotoPerfil.startsWith("/")
 const fotoPerfilFallbackSrc = fotoPerfilFallback.startsWith("/")
   ? `${import.meta.env.BASE_URL}${fotoPerfilFallback.slice(1)}`
   : fotoPerfilFallback;
+const brandIcon = "/assets/images/branding/navbar-logo.png";
+const brandIconSrc = brandIcon.startsWith("/")
+  ? `${import.meta.env.BASE_URL}${brandIcon.slice(1)}`
+  : brandIcon;
 
 const socialLinks = {
   instagram: "https://www.instagram.com/dev.jpedro/",
@@ -113,71 +117,13 @@ function SocialIconLink({ nome, href, Icon }) {
 
 function BrandMark() {
   return (
-    <span className="inline-flex h-12 w-12 items-center justify-center">
-      <span className="inline-flex h-10 w-10 items-center justify-center bg-transparent">
-        <svg
-          viewBox="0 0 48 48"
-          aria-hidden="true"
-          className="h-8 w-8"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-        <defs>
-          <linearGradient
-            id="brand-mark-gradient"
-            x1="8"
-            y1="10"
-            x2="40"
-            y2="38"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="#2E1065" />
-            <stop offset="0.55" stopColor="#6D28D9" />
-            <stop offset="1" stopColor="#8B5CF6" />
-          </linearGradient>
-        </defs>
-        <path
-          d="M15 13L6 24L15 35"
-          stroke="rgba(30, 58, 138, 0.92)"
-          strokeWidth="7"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M24 11L18 37"
-          stroke="rgba(30, 58, 138, 0.92)"
-          strokeWidth="7"
-          strokeLinecap="round"
-        />
-        <path
-          d="M33 13L42 24L33 35"
-          stroke="rgba(30, 58, 138, 0.92)"
-          strokeWidth="7"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M15 13L6 24L15 35"
-          stroke="url(#brand-mark-gradient)"
-          strokeWidth="4.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M24 11L18 37"
-          stroke="url(#brand-mark-gradient)"
-          strokeWidth="4.5"
-          strokeLinecap="round"
-        />
-        <path
-          d="M33 13L42 24L33 35"
-          stroke="url(#brand-mark-gradient)"
-          strokeWidth="4.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        </svg>
-      </span>
+    <span className="brand-mark-shell inline-flex h-[3.35rem] w-[3.35rem] items-center justify-center sm:h-12 sm:w-12">
+      <img
+        src={brandIconSrc}
+        alt=""
+        aria-hidden="true"
+        className="brand-mark-image h-[2.9rem] w-[2.9rem] object-contain sm:h-11 sm:w-11"
+      />
     </span>
   );
 }
@@ -256,10 +202,11 @@ export default function PortfolioJoaoPedro() {
       <div className="background-tech" aria-hidden="true" />
 
       <header className="sticky top-0 z-50 border-b border-white/5 bg-slate-950/72 backdrop-blur-md md:backdrop-blur-xl">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
+        <div className="mx-auto max-w-6xl px-3 sm:px-6">
+          <div className="flex items-center justify-between gap-2 py-2.5 sm:gap-4 sm:py-4">
           <a
             href="#inicio"
-            className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.3em] text-slate-100 transition duration-300 hover:text-cyan-200"
+            className="flex items-center gap-2.5 text-[0.9rem] font-semibold uppercase tracking-[0.18em] text-slate-100 transition duration-300 hover:text-cyan-200 sm:gap-3 sm:text-sm sm:tracking-[0.3em]"
             aria-label="DEV JPEDRO"
           >
             <BrandMark />
@@ -285,7 +232,7 @@ export default function PortfolioJoaoPedro() {
 
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-slate-200 transition duration-300 hover:border-cyan-400/30 hover:bg-white/[0.08] hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/40 sm:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-slate-200 transition duration-300 hover:border-cyan-400/30 hover:bg-white/[0.08] hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/40 sm:hidden"
             aria-controls="mobile-navigation"
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? "Fechar menu de navegação" : "Abrir menu de navegação"}
@@ -309,12 +256,13 @@ export default function PortfolioJoaoPedro() {
               />
             </span>
           </button>
+          </div>
 
           <div
             id="mobile-navigation"
-            className={`w-full overflow-hidden transition-all duration-300 ease-out sm:hidden ${
+            className={`overflow-hidden transition-all duration-300 ease-out sm:hidden ${
               mobileMenuOpen
-                ? "visible max-h-96 border-t border-white/5 pt-4 opacity-100 pointer-events-auto"
+                ? "visible max-h-96 border-t border-white/5 pb-3 pt-3 opacity-100 pointer-events-auto"
                 : "invisible max-h-0 opacity-0 pointer-events-none"
             }`}
           >
