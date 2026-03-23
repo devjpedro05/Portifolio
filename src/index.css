@@ -1,6 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
 
 @layer base {
   html {
@@ -9,7 +15,8 @@
 
   body {
     @apply bg-slate-950 text-slate-100 antialiased;
-    font-family: "Segoe UI", "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Manrope", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #00020d;
   }
 
   #root {
@@ -18,5 +25,285 @@
 
   ::selection {
     @apply bg-cyan-400/30 text-white;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply mx-auto max-w-6xl px-6 py-20;
+  }
+
+  .section-kicker {
+    @apply inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.3em] text-cyan-100/90;
+  }
+
+  .surface-panel {
+    @apply rounded-[2rem] border border-white/10 bg-slate-900/60 shadow-[0_30px_80px_-45px_rgba(2,6,23,0.98)] backdrop-blur-xl;
+  }
+
+  .nav-link {
+    @apply rounded-full px-4 py-2 text-sm text-slate-300 transition duration-300 hover:bg-white/[0.05] hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/40;
+  }
+
+  .typing-brand-shell {
+    position: relative;
+    display: inline-grid;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 0.35rem;
+  }
+
+  .typing-brand-shell::before {
+    content: "DEV JPEDRO";
+    grid-area: 1 / 1;
+    visibility: hidden;
+    white-space: nowrap;
+  }
+
+  .typing-brand {
+    grid-area: 1 / 1;
+    display: inline-block;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: rgba(241, 245, 249, 0.96);
+    background-image: linear-gradient(
+      90deg,
+      rgba(226, 232, 240, 0.88) 0%,
+      rgba(125, 211, 252, 0.94) 28%,
+      rgba(255, 255, 255, 0.98) 50%,
+      rgba(103, 232, 249, 0.94) 72%,
+      rgba(226, 232, 240, 0.88) 100%
+    );
+    background-size: 220% 100%;
+    background-position: 0% 50%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-right: 1px solid rgba(125, 211, 252, 0.72);
+    padding-right: 0.22rem;
+    filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.18));
+    animation:
+      typeBrand 2.4s steps(10, end) 0.25s forwards,
+      blinkCaret 0.95s steps(1, end) 0.25s infinite,
+      brandGlowSweep 4.8s ease-in-out 0.3s infinite;
+  }
+}
+
+@keyframes typeBrand {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blinkCaret {
+  0%,
+  48% {
+    border-right-color: rgba(125, 211, 252, 0.72);
+  }
+
+  50%,
+  100% {
+    border-right-color: transparent;
+  }
+}
+
+@keyframes brandGlowSweep {
+  0% {
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.14));
+  }
+
+  50% {
+    background-position: 100% 50%;
+    filter: drop-shadow(0 0 14px rgba(103, 232, 249, 0.26));
+  }
+
+  100% {
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.14));
+  }
+}
+
+@keyframes moveBg {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    background-position:
+      18% 24%,
+      78% 30%,
+      52% 74%,
+      0 0,
+      0 0;
+    opacity: 0.62;
+  }
+
+  50% {
+    transform: translate3d(7%, -5%, 0) scale(1.12) rotate(-2deg);
+    background-position:
+      34% 14%,
+      66% 44%,
+      64% 62%,
+      64px -42px,
+      -42px 64px;
+    opacity: 0.96;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    background-position:
+      18% 24%,
+      78% 30%,
+      52% 74%,
+      0 0,
+      0 0;
+    opacity: 0.62;
+  }
+}
+
+@keyframes moveBgAlt {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    background-position:
+      28% 28%,
+      72% 24%,
+      58% 72%;
+    opacity: 0.44;
+  }
+
+  50% {
+    transform: translate3d(-7%, 5%, 0) scale(1.2);
+    background-position:
+      16% 40%,
+      82% 14%,
+      48% 84%;
+    opacity: 0.88;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    background-position:
+      28% 28%,
+      72% 24%,
+      58% 72%;
+    opacity: 0.44;
+  }
+}
+
+@keyframes moveBgBase {
+  0% {
+    background-position:
+      0% 0%,
+      100% 0%,
+      50% 50%,
+      50% 50%;
+    filter: saturate(100%);
+  }
+
+  50% {
+    background-position:
+      12% -8%,
+      88% 8%,
+      40% 64%,
+      50% 50%;
+    filter: saturate(125%);
+  }
+
+  100% {
+    background-position:
+      0% 0%,
+      100% 0%,
+      50% 50%,
+      50% 50%;
+    filter: saturate(100%);
+  }
+}
+
+.background-tech {
+  position: fixed;
+  inset: -18%;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(34, 211, 238, 0.08) 0%, rgba(34, 211, 238, 0.035) 20%, transparent 58%),
+    radial-gradient(circle at 82% 18%, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.035) 18%, transparent 54%),
+    linear-gradient(135deg, rgba(76, 29, 149, 0.06) 0%, transparent 58%),
+    linear-gradient(180deg, #00020d 0%, #010412 56%, #00020d 100%);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: 120% 120%, 120% 120%, 140% 140%, 100% 100%;
+  background-position:
+    8% 6%,
+    92% 8%,
+    50% 50%,
+    50% 50%;
+  animation: moveBgBase 18s ease-in-out infinite;
+}
+
+.background-tech::before,
+.background-tech::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  will-change: transform, opacity, background-position;
+}
+
+.background-tech::before {
+  background:
+    radial-gradient(circle at 18% 24%, rgba(56, 189, 248, 0.15) 0%, rgba(56, 189, 248, 0.08) 22%, transparent 58%),
+    radial-gradient(circle at 78% 30%, rgba(34, 211, 238, 0.12) 0%, rgba(34, 211, 238, 0.06) 18%, transparent 54%),
+    radial-gradient(circle at 52% 74%, rgba(139, 92, 246, 0.11) 0%, rgba(139, 92, 246, 0.05) 20%, transparent 56%),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+    linear-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px);
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat, repeat;
+  background-size: 130% 130%, 130% 130%, 140% 140%, 88px 88px, 88px 88px;
+  background-position:
+    18% 24%,
+    78% 30%,
+    52% 74%,
+    0 0,
+    0 0;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.9) 58%, transparent 100%);
+  opacity: 0.62;
+  animation: moveBg 10s ease-in-out infinite;
+}
+
+.background-tech::after {
+  background:
+    radial-gradient(circle at 28% 28%, rgba(34, 211, 238, 0.13) 0%, rgba(34, 211, 238, 0.06) 18%, transparent 52%),
+    radial-gradient(circle at 72% 24%, rgba(59, 130, 246, 0.11) 0%, rgba(59, 130, 246, 0.05) 16%, transparent 48%),
+    radial-gradient(circle at 58% 72%, rgba(168, 85, 247, 0.1) 0%, rgba(168, 85, 247, 0.04) 18%, transparent 54%);
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: 135% 135%, 135% 135%, 145% 145%;
+  background-position:
+    28% 28%,
+    72% 24%,
+    58% 72%;
+  filter: blur(64px);
+  opacity: 0.44;
+  animation: moveBgAlt 11s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .typing-brand {
+    width: 100%;
+    border-right-color: transparent;
+    background-position: 50% 50%;
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.14));
+    animation: none !important;
+  }
+
+  .background-tech::before,
+  .background-tech::after,
+  .background-tech {
+    animation: none !important;
   }
 }
