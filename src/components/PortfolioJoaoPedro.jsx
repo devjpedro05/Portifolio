@@ -240,17 +240,17 @@ export default function PortfolioJoaoPedro() {
           >
             <span className="relative h-4 w-5">
               <span
-                className={`absolute left-0 top-0 h-0.5 w-5 rounded-full bg-current transition duration-300 ${
+                className={`absolute left-0 top-0 h-0.5 w-5 rounded-full bg-current transition duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] transform-gpu ${
                   mobileMenuOpen ? "translate-y-[7px] rotate-45" : ""
                 }`}
               />
               <span
-                className={`absolute left-0 top-[7px] h-0.5 w-5 rounded-full bg-current transition duration-300 ${
+                className={`absolute left-0 top-[7px] h-0.5 w-5 rounded-full bg-current transition duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] transform-gpu ${
                   mobileMenuOpen ? "opacity-0" : "opacity-100"
                 }`}
               />
               <span
-                className={`absolute left-0 top-[14px] h-0.5 w-5 rounded-full bg-current transition duration-300 ${
+                className={`absolute left-0 top-[14px] h-0.5 w-5 rounded-full bg-current transition duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] transform-gpu ${
                   mobileMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
                 }`}
               />
@@ -260,32 +260,40 @@ export default function PortfolioJoaoPedro() {
 
           <div
             id="mobile-navigation"
-            className={`overflow-hidden transition-all duration-300 ease-out sm:hidden ${
+            className={`grid overflow-hidden transition-[grid-template-rows,opacity,padding] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:hidden ${
               mobileMenuOpen
-                ? "visible max-h-96 border-t border-white/5 pb-3 pt-3 opacity-100 pointer-events-auto"
-                : "invisible max-h-0 opacity-0 pointer-events-none"
+                ? "visible grid-rows-[1fr] border-t border-white/5 pb-3 pt-3 opacity-100 pointer-events-auto"
+                : "invisible grid-rows-[0fr] opacity-0 pointer-events-none"
             }`}
           >
-            <div className="rounded-[1.75rem] border border-white/10 bg-slate-950/75 p-3 shadow-[0_25px_60px_-40px_rgba(2,6,23,0.95)] backdrop-blur-md sm:backdrop-blur-xl">
-              <nav className="flex flex-col gap-1">
-                {navItems.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    className="rounded-2xl px-4 py-3 text-sm text-slate-300 transition duration-300 hover:bg-white/[0.05] hover:text-cyan-200"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
-              <a
-                href="#contato"
-                className="mt-3 inline-flex w-full items-center justify-center rounded-2xl border border-cyan-400/25 bg-cyan-400/12 px-4 py-3 text-sm font-medium text-cyan-100 transition duration-300 hover:border-cyan-300/40 hover:bg-cyan-400/18"
-                onClick={() => setMobileMenuOpen(false)}
+            <div className="overflow-hidden">
+              <div
+                className={`rounded-[1.75rem] border border-white/10 bg-slate-950/75 p-3 shadow-[0_25px_60px_-40px_rgba(2,6,23,0.95)] backdrop-blur-md transition duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:backdrop-blur-xl ${
+                  mobileMenuOpen
+                    ? "translate-y-0 scale-100 opacity-100"
+                    : "-translate-y-2 scale-[0.98] opacity-0"
+                }`}
               >
-                Falar comigo
-              </a>
+                <nav className="flex flex-col gap-1">
+                  {navItems.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      className="rounded-2xl px-4 py-3 text-sm text-slate-300 transition duration-300 hover:bg-white/[0.05] hover:text-cyan-200"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </nav>
+                <a
+                  href="#contato"
+                  className="mt-3 inline-flex w-full items-center justify-center rounded-2xl border border-cyan-400/25 bg-cyan-400/12 px-4 py-3 text-sm font-medium text-cyan-100 transition duration-300 hover:border-cyan-300/40 hover:bg-cyan-400/18"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Falar comigo
+                </a>
+              </div>
             </div>
           </div>
         </div>
