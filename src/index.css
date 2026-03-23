@@ -123,6 +123,64 @@
     pointer-events: none;
   }
 
+  .floating-whatsapp {
+    position: fixed;
+    right: calc(1rem + env(safe-area-inset-right, 0px));
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    z-index: 55;
+    display: inline-flex;
+    height: 3.65rem;
+    width: 3.65rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: rgb(203 213 225);
+    box-shadow:
+      0 18px 38px -20px rgba(2, 6, 23, 0.95),
+      0 0 0 1px rgba(255, 255, 255, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    animation: whatsappFloat 3.8s ease-in-out infinite;
+    transition:
+      transform 300ms ease,
+      box-shadow 300ms ease,
+      color 300ms ease,
+      border-color 300ms ease,
+      background-color 300ms ease;
+    isolation: isolate;
+  }
+
+  .floating-whatsapp::before {
+    content: "";
+    position: absolute;
+    inset: -0.3rem;
+    border-radius: inherit;
+    background: radial-gradient(
+      circle at center,
+      rgba(34, 211, 238, 0.22) 0%,
+      rgba(34, 211, 238, 0.08) 45%,
+      transparent 72%
+    );
+    opacity: 0.42;
+    filter: blur(10px);
+    z-index: -1;
+    animation: whatsappPulse 3.8s ease-in-out infinite;
+  }
+
+  .floating-whatsapp:hover {
+    transform: translateY(-2px) scale(1.03);
+    border-color: rgba(34, 211, 238, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgb(165 243 252);
+    box-shadow:
+      0 20px 42px -20px rgba(2, 6, 23, 0.95),
+      0 0 0 1px rgba(255, 255, 255, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  }
+
   .hero-avatar-shell {
     isolation: isolate;
   }
@@ -415,6 +473,30 @@
 
   50% {
     transform: translate3d(0, -5px, 0);
+  }
+}
+
+@keyframes whatsappFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -5px, 0);
+  }
+}
+
+@keyframes whatsappPulse {
+  0%,
+  100% {
+    opacity: 0.46;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 0.78;
+    transform: scale(1.08);
   }
 }
 
@@ -725,6 +807,11 @@
   }
 
   .brand-mark-shell {
+    animation: none !important;
+  }
+
+  .floating-whatsapp,
+  .floating-whatsapp::before {
     animation: none !important;
   }
 

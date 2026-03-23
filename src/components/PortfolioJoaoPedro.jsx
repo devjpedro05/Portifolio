@@ -597,6 +597,16 @@ export default function PortfolioJoaoPedro() {
         </section>
       </main>
 
+      <a
+        href={socialLinks.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Falar no WhatsApp"
+        className="floating-whatsapp sm:hidden"
+      >
+        <FaWhatsapp className="text-[1.7rem]" />
+      </a>
+
       <footer className="relative border-t border-white/5 bg-slate-950/55 py-10 backdrop-blur-md md:backdrop-blur-xl">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-cyan-400/[0.05] via-slate-950/10 to-transparent" />
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 text-center md:flex-row md:text-left">
