@@ -210,7 +210,7 @@ export default function PortfolioJoaoPedro() {
     <div className="relative isolate min-h-screen overflow-hidden bg-slate-950 text-slate-100">
       <div className="background-tech" aria-hidden="true" />
 
-      <header className="sticky top-0 z-50 border-b border-white/5 bg-slate-950/72 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-white/5 bg-slate-950/72 backdrop-blur-md md:backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
           <a
             href="#inicio"
@@ -273,7 +273,7 @@ export default function PortfolioJoaoPedro() {
                 : "invisible max-h-0 opacity-0 pointer-events-none"
             }`}
           >
-            <div className="rounded-[1.75rem] border border-white/10 bg-slate-950/75 p-3 shadow-[0_25px_60px_-40px_rgba(2,6,23,0.95)] backdrop-blur-xl">
+            <div className="rounded-[1.75rem] border border-white/10 bg-slate-950/75 p-3 shadow-[0_25px_60px_-40px_rgba(2,6,23,0.95)] backdrop-blur-md sm:backdrop-blur-xl">
               <nav className="flex flex-col gap-1">
                 {navItems.map((item) => (
                   <a
@@ -348,7 +348,7 @@ export default function PortfolioJoaoPedro() {
 
             <div className="relative z-10 flex justify-center md:justify-end">
               <div className="relative w-full max-w-[24rem]">
-                <div className="absolute -inset-6 rounded-[2.75rem] bg-gradient-to-br from-cyan-400/16 via-sky-400/8 to-transparent blur-3xl" />
+                  <div className="absolute -inset-6 rounded-[2.75rem] bg-gradient-to-br from-cyan-400/16 via-sky-400/8 to-transparent blur-2xl md:blur-3xl" />
                 <div className="surface-panel relative overflow-hidden rounded-[2.4rem] p-5 sm:p-6">
                   <div className="mb-5 flex items-center justify-between gap-3 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2.5">
                     <span className="text-[0.65rem] uppercase tracking-[0.32em] text-slate-400">
@@ -362,8 +362,8 @@ export default function PortfolioJoaoPedro() {
                   <div className="relative aspect-square overflow-hidden rounded-full border border-white/10 bg-slate-950 shadow-[0_30px_80px_-40px_rgba(2,6,23,0.95)]">
                     {exibirFallbackFoto ? (
                       <div className="relative h-full w-full rounded-full bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.16),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.14),transparent_30%),linear-gradient(145deg,rgba(15,23,42,0.96),rgba(2,6,23,1))]">
-                        <div className="absolute -right-10 top-10 h-32 w-32 rounded-full bg-cyan-400/10 blur-3xl" />
-                        <div className="absolute inset-10 rounded-full border border-white/10 bg-white/5 backdrop-blur-md" />
+                          <div className="absolute -right-10 top-10 h-32 w-32 rounded-full bg-cyan-400/10 blur-2xl md:blur-3xl" />
+                          <div className="absolute inset-10 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm md:backdrop-blur-md" />
                         <div className="absolute inset-[28%] rounded-full border border-cyan-400/15 bg-slate-950/60" />
                       </div>
                     ) : (
@@ -520,7 +520,7 @@ export default function PortfolioJoaoPedro() {
         </section>
       </main>
 
-      <footer className="relative border-t border-white/5 bg-slate-950/55 py-10 backdrop-blur-xl">
+      <footer className="relative border-t border-white/5 bg-slate-950/55 py-10 backdrop-blur-md md:backdrop-blur-xl">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-cyan-400/[0.05] via-slate-950/10 to-transparent" />
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 text-center md:flex-row md:text-left">
           <div>
