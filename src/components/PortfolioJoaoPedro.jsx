@@ -9,10 +9,14 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 
-const fotoPerfil = "/assets/images/profile/foto-perfil.png";
+const fotoPerfil = "/assets/images/profile/foto-perfil-transparent.png";
+const fotoPerfilFallback = "/assets/images/profile/foto-perfil-tech.png";
 const fotoPerfilSrc = fotoPerfil.startsWith("/")
   ? `${import.meta.env.BASE_URL}${fotoPerfil.slice(1)}`
   : fotoPerfil;
+const fotoPerfilFallbackSrc = fotoPerfilFallback.startsWith("/")
+  ? `${import.meta.env.BASE_URL}${fotoPerfilFallback.slice(1)}`
+  : fotoPerfilFallback;
 
 const socialLinks = {
   instagram: "https://www.instagram.com/dev.jpedro/",
@@ -244,7 +248,8 @@ export default function PortfolioJoaoPedro() {
     Conceitos: ["POO", "Estruturas de Dados", "Algoritmos", "Arquitetura de Software"],
   };
 
-  const exibirFallbackFoto = !fotoPerfilSrc || fotoComErro;
+  const fotoPerfilAtiva = fotoComErro ? fotoPerfilFallbackSrc : fotoPerfilSrc;
+  const exibirFallbackFoto = !fotoPerfilAtiva;
 
   return (
     <div className="relative isolate min-h-screen overflow-hidden bg-slate-950 text-slate-100">
@@ -399,24 +404,36 @@ export default function PortfolioJoaoPedro() {
                     </span>
                   </div>
 
-                  <div className="relative aspect-square overflow-hidden rounded-full border border-white/10 bg-slate-950 shadow-[0_30px_80px_-40px_rgba(2,6,23,0.95)]">
+                  <div className="hero-avatar-shell relative aspect-square overflow-hidden rounded-full border border-white/10 bg-slate-950 shadow-[0_30px_80px_-40px_rgba(2,6,23,0.95)]">
+                    <div className="hero-avatar-field" aria-hidden="true" />
+                    <div className="hero-avatar-ring" aria-hidden="true" />
+                    <div className="hero-avatar-scan" aria-hidden="true" />
+
                     {exibirFallbackFoto ? (
-                      <div className="relative h-full w-full rounded-full bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.16),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.14),transparent_30%),linear-gradient(145deg,rgba(15,23,42,0.96),rgba(2,6,23,1))]">
-                          <div className="absolute -right-10 top-10 h-32 w-32 rounded-full bg-cyan-400/10 blur-2xl md:blur-3xl" />
-                          <div className="absolute inset-10 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm md:backdrop-blur-md" />
+                      <div className="relative z-10 h-full w-full rounded-full">
+                        <div className="absolute -right-10 top-10 h-32 w-32 rounded-full bg-cyan-400/10 blur-2xl md:blur-3xl" />
+                        <div className="absolute inset-10 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm md:backdrop-blur-md" />
                         <div className="absolute inset-[28%] rounded-full border border-cyan-400/15 bg-slate-950/60" />
                       </div>
                     ) : (
                       <>
                         <img
-                          src={fotoPerfilSrc}
+                          src={fotoPerfilAtiva}
                           alt="Foto profissional de João Pedro Barros"
-                          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-                          onError={() => setFotoComErro(true)}
+                          className="hero-avatar-image"
+                          onError={() => {
+                            if (!fotoComErro) {
+                              setFotoComErro(true);
+                            }
+                          }}
                         />
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,transparent_42%,rgba(2,6,23,0.18)),linear-gradient(180deg,rgba(2,6,23,0.02),rgba(2,6,23,0.22))]" />
                       </>
                     )}
+
+                    <div
+                      className="absolute inset-0 z-20 bg-[radial-gradient(circle_at_50%_18%,transparent_34%,rgba(2,6,23,0.08)_58%,rgba(2,6,23,0.42)_100%),linear-gradient(180deg,rgba(2,6,23,0.02),rgba(2,6,23,0.18))]"
+                      aria-hidden="true"
+                    />
                   </div>
 
                   <div className="mt-5 rounded-[1.5rem] border border-white/10 bg-white/[0.04] px-4 py-4">

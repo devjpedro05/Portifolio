@@ -88,6 +88,115 @@
       blinkCaret 0.95s steps(1, end) 0.25s infinite,
       brandGlowSweep 4.8s ease-in-out 0.3s infinite;
   }
+
+  .hero-avatar-shell {
+    isolation: isolate;
+  }
+
+  .hero-avatar-field {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 62%, rgba(8, 145, 178, 0.34) 0%, rgba(8, 145, 178, 0.2) 18%, transparent 52%),
+      radial-gradient(circle at 32% 26%, rgba(34, 211, 238, 0.22) 0%, rgba(34, 211, 238, 0.11) 18%, transparent 48%),
+      radial-gradient(circle at 72% 24%, rgba(59, 130, 246, 0.24) 0%, rgba(59, 130, 246, 0.11) 18%, transparent 44%),
+      linear-gradient(180deg, rgba(2, 6, 23, 0.9) 0%, rgba(2, 6, 23, 1) 100%);
+  }
+
+  .hero-avatar-field::before,
+  .hero-avatar-field::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .hero-avatar-field::before {
+    inset: -10%;
+    background:
+      radial-gradient(circle at 48% 58%, rgba(34, 211, 238, 0.34) 0%, rgba(34, 211, 238, 0.17) 16%, transparent 36%),
+      radial-gradient(circle at 24% 34%, rgba(56, 189, 248, 0.24) 0%, transparent 28%),
+      radial-gradient(circle at 76% 30%, rgba(99, 102, 241, 0.22) 0%, transparent 26%),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.035) 1px, transparent 1px),
+      linear-gradient(rgba(148, 163, 184, 0.035) 1px, transparent 1px);
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat, repeat;
+    background-size: 120% 120%, 90% 90%, 90% 90%, 34px 34px, 34px 34px;
+    background-position:
+      50% 56%,
+      16% 30%,
+      84% 26%,
+      0 0,
+      0 0;
+    opacity: 0.9;
+    animation: avatarFieldDrift 15s ease-in-out infinite;
+  }
+
+  .hero-avatar-field::after {
+    background:
+      radial-gradient(circle at center, transparent 28%, rgba(15, 23, 42, 0.14) 54%, rgba(2, 6, 23, 0.58) 100%),
+      linear-gradient(180deg, rgba(2, 6, 23, 0) 0%, rgba(2, 6, 23, 0.24) 100%);
+  }
+
+  .hero-avatar-ring {
+    position: absolute;
+    inset: 8%;
+    z-index: 5;
+    border-radius: 9999px;
+    border: 1px solid rgba(125, 211, 252, 0.24);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+      0 0 0 1px rgba(34, 211, 238, 0.08),
+      0 0 40px rgba(34, 211, 238, 0.14);
+    animation: avatarRingPulse 8s ease-in-out infinite;
+  }
+
+  .hero-avatar-scan {
+    position: absolute;
+    inset: -18% 12%;
+    z-index: 6;
+    border-radius: 9999px;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(165, 243, 252, 0.08) 22%,
+      rgba(103, 232, 249, 0.34) 50%,
+      rgba(165, 243, 252, 0.1) 72%,
+      transparent 100%
+    );
+    filter: blur(12px);
+    opacity: 0.54;
+    mix-blend-mode: screen;
+    animation: avatarScanSweep 9s linear infinite;
+  }
+
+  .hero-avatar-image {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    transform: scale(1.06) translateY(1.5%);
+    filter: saturate(1.04) contrast(1.02) drop-shadow(0 24px 34px rgba(2, 6, 23, 0.6));
+    mask-image: radial-gradient(
+      ellipse 57% 78% at 56% 42%,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 56%,
+      rgba(0, 0, 0, 0.86) 69%,
+      transparent 90%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 57% 78% at 56% 42%,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 56%,
+      rgba(0, 0, 0, 0.86) 69%,
+      transparent 90%
+    );
+  }
 }
 
 @keyframes typeBrand {
@@ -253,6 +362,83 @@
   }
 }
 
+@keyframes avatarFieldDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    background-position:
+      50% 56%,
+      16% 30%,
+      84% 26%,
+      0 0,
+      0 0;
+  }
+
+  50% {
+    transform: translate3d(-2%, -2%, 0) scale(1.05) rotate(-1.5deg);
+    background-position:
+      46% 50%,
+      22% 36%,
+      78% 20%,
+      18px -14px,
+      -14px 18px;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    background-position:
+      50% 56%,
+      16% 30%,
+      84% 26%,
+      0 0,
+      0 0;
+  }
+}
+
+@keyframes avatarRingPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.82;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+      0 0 0 1px rgba(34, 211, 238, 0.08),
+      0 0 40px rgba(34, 211, 238, 0.14);
+  }
+
+  50% {
+    transform: scale(1.024);
+    opacity: 1;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+      0 0 0 1px rgba(34, 211, 238, 0.12),
+      0 0 56px rgba(34, 211, 238, 0.22);
+  }
+}
+
+@keyframes avatarScanSweep {
+  0% {
+    transform: translate3d(0, -115%, 0);
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 0.22;
+  }
+
+  50% {
+    opacity: 0.58;
+  }
+
+  82% {
+    opacity: 0.22;
+  }
+
+  100% {
+    transform: translate3d(0, 115%, 0);
+    opacity: 0;
+  }
+}
+
 .background-tech {
   position: fixed;
   inset: -18%;
@@ -335,6 +521,23 @@
       mobileBrandGlow 6.5s ease-in-out 2.4s infinite;
   }
 
+  .hero-avatar-field::before {
+    background-size: 118% 118%, 88% 88%, 88% 88%, 30px 30px, 30px 30px;
+    animation-duration: 18s;
+  }
+
+  .hero-avatar-scan {
+    inset: -14% 14%;
+    filter: blur(8px);
+    opacity: 0.28;
+    animation-duration: 11s;
+  }
+
+  .hero-avatar-image {
+    transform: scale(1.04) translateY(1%);
+    filter: saturate(1.02) contrast(1.01) drop-shadow(0 18px 28px rgba(2, 6, 23, 0.52));
+  }
+
   .background-tech {
     position: absolute;
     inset: 0;
@@ -405,6 +608,12 @@
     border-right-color: transparent;
     background-position: 50% 50%;
     filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.14));
+    animation: none !important;
+  }
+
+  .hero-avatar-field::before,
+  .hero-avatar-ring,
+  .hero-avatar-scan {
     animation: none !important;
   }
 
