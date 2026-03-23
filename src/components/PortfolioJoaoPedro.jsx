@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import {
+  FaGithub,
+  FaInstagram,
+  FaLaptopCode,
+  FaLayerGroup,
+  FaLinkedin,
+  FaRocket,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 const fotoPerfil = "/assets/images/profile/foto-perfil.png";
 const fotoPerfilSrc = fotoPerfil.startsWith("/")
@@ -15,6 +23,7 @@ const socialLinks = {
 
 const navItems = [
   { label: "Início", href: "#inicio" },
+  { label: "Soluções", href: "#solucoes" },
   { label: "Habilidades", href: "#habilidades" },
   { label: "Projetos", href: "#projetos" },
   { label: "Contato", href: "#contato" },
@@ -39,6 +48,37 @@ const heroHighlights = [
   "Sistemas web e desktop com foco em produto e operação.",
   "Integrações, mapas, banco de dados e arquitetura aplicada.",
   "Entrega de soluções reais com leitura forte de contexto técnico.",
+];
+
+const serviceItems = [
+  {
+    title: "Landing Pages",
+    description:
+      "Páginas modernas, rápidas e estratégicas para apresentação de serviços, captação de clientes e fortalecimento da presença digital.",
+    Icon: FaRocket,
+  },
+  {
+    title: "Sistemas Web para Gestão",
+    description:
+      "Sistemas personalizados para controle, organização e automação de processos internos, com foco em eficiência e praticidade.",
+    Icon: FaLaptopCode,
+  },
+  {
+    title: "Soluções Sob Medida",
+    description:
+      "Desenvolvimento de funcionalidades e aplicações específicas conforme a necessidade do cliente, com foco em desempenho, usabilidade e escalabilidade.",
+    Icon: FaLayerGroup,
+  },
+];
+
+const serviceHighlights = [
+  "Layout moderno",
+  "Responsivo",
+  "Integração com APIs",
+  "Banco de dados",
+  "Deploy profissional",
+  "Foco em performance",
+  "Interface intuitiva",
 ];
 
 function SectionHeading({ kicker, title, description }) {
@@ -355,7 +395,7 @@ export default function PortfolioJoaoPedro() {
                       Perfil Profissional
                     </span>
                     <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-[0.65rem] uppercase tracking-[0.24em] text-cyan-100">
-                      Disponível
+                        Em atividade
                     </span>
                   </div>
 
@@ -391,6 +431,78 @@ export default function PortfolioJoaoPedro() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section id="solucoes" className="section-shell scroll-mt-28 pt-8">
+          <div className="grid gap-8 xl:grid-cols-[minmax(0,1.16fr)_minmax(19rem,0.84fr)] xl:items-start">
+            <div>
+              <SectionHeading
+                kicker="Soluções"
+                title="Soluções para o seu negócio"
+                description="Desenvolvimento de páginas e sistemas web sob medida para fortalecer sua presença digital, organizar processos e entregar experiências modernas com foco em resultado."
+              />
+
+              <div className="mt-12 grid gap-6 md:grid-cols-3">
+                {serviceItems.map(({ title, description, Icon }) => (
+                  <article
+                    key={title}
+                    className="surface-panel group relative overflow-hidden p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/25"
+                  >
+                    <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/30 to-transparent" />
+                    <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-100 shadow-[0_20px_40px_-28px_rgba(34,211,238,0.65)] transition duration-300 group-hover:scale-105 group-hover:border-cyan-300/35 group-hover:bg-cyan-400/14">
+                      <Icon className="text-2xl" />
+                    </div>
+                    <h3 className="mt-6 text-xl font-semibold tracking-tight text-white">
+                      {title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-7 text-slate-400">
+                      {description}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <aside className="surface-panel relative overflow-hidden p-7 md:p-8">
+              <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/35 to-transparent" />
+              <span className="section-kicker">Diferenciais</span>
+              <h3 className="mt-6 text-2xl font-semibold tracking-tight text-white">
+                Estrutura pensada para gerar presença, clareza e eficiência.
+              </h3>
+              <p className="mt-4 text-sm leading-7 text-slate-400">
+                Cada projeto é desenvolvido com foco em experiência do usuário,
+                performance e uma entrega visual coerente com o posicionamento do
+                seu negócio.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-2.5">
+                {serviceHighlights.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 text-sm text-slate-300 transition duration-300 hover:border-cyan-400/25 hover:text-cyan-100"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-8 rounded-[1.6rem] border border-white/10 bg-slate-950/55 p-5">
+                <p className="text-sm font-medium text-white">
+                  Precisa de uma landing page ou sistema para o seu negócio?
+                </p>
+                <p className="mt-3 text-sm leading-6 text-slate-400">
+                  Posso estruturar uma solução sob medida para sua operação, desde
+                  a interface até integrações e publicação profissional.
+                </p>
+                <a
+                  href="#contato"
+                  className="mt-5 inline-flex items-center justify-center rounded-full border border-cyan-400/25 bg-cyan-400/12 px-5 py-3 text-sm font-medium text-cyan-100 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-cyan-400/18"
+                >
+                  Solicitar projeto
+                </a>
+              </div>
+            </aside>
           </div>
         </section>
 
