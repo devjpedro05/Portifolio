@@ -229,10 +229,14 @@ export default function MagicProjectCard({
       onClick={handleClick}
       {...rest}
     >
-      {enableSpotlight ? <div className="magic-project-card__spotlight" aria-hidden="true" /> : null}
-      {enableBorderGlow ? <div className="magic-project-card__border" aria-hidden="true" /> : null}
+      {enableSpotlight && isInteractive ? (
+        <div className="magic-project-card__spotlight" aria-hidden="true" />
+      ) : null}
+      {enableBorderGlow && isInteractive ? (
+        <div className="magic-project-card__border" aria-hidden="true" />
+      ) : null}
 
-      {enableStars ? (
+      {enableStars && isInteractive ? (
         <div className="magic-project-card__stars" aria-hidden="true">
           {stars.map((star, index) => (
             <span

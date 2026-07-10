@@ -828,7 +828,7 @@ export default function PortfolioJoaoPedro() {
               <MagicProjectCard
                 key={projeto.titulo}
                 as="article"
-                className="surface-panel reveal-item group p-7 md:p-8"
+                className="surface-panel project-card reveal-item group p-6 md:p-8"
                 data-reveal="up"
                 style={getRevealStyle(110 + index * 100)}
                 enableStars
@@ -842,26 +842,26 @@ export default function PortfolioJoaoPedro() {
                 glowColor="34, 211, 238"
               >
                 <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-cyan-300/40 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
-                <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
+                <div className="project-card-grid grid gap-6 lg:items-start">
                   <div className="max-w-3xl">
-                    <h3 className="text-2xl font-semibold tracking-tight text-white">
+                    <h3 className="text-[1.45rem] font-semibold leading-tight tracking-tight text-white md:text-2xl">
                       {projeto.titulo}
                     </h3>
-                    <p className="mt-4 text-base leading-8 text-slate-400">
+                    <p className="mt-4 max-w-2xl text-[0.95rem] leading-7 text-slate-400 md:text-base md:leading-8">
                       {projeto.descricao}
                     </p>
 
-                    <ul className="mt-6 space-y-3 text-sm leading-7 text-slate-400">
+                    <ul className="project-detail-list mt-6 text-sm leading-7 text-slate-400">
                       {projeto.detalhes.map((detalhe) => (
-                        <li key={detalhe} className="flex gap-3">
-                          <span className="mt-2 h-2 w-2 rounded-full bg-cyan-300" />
+                        <li key={detalhe} className="project-detail-item">
+                          <span className="project-detail-dot" />
                           <span>{detalhe}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <aside className="w-full rounded-[1.6rem] border border-white/10 bg-white/[0.04] p-5 lg:w-[15rem] lg:self-start">
+                  <aside className="project-stack-panel w-full rounded-[1.45rem] border border-white/10 bg-white/[0.04] p-5 lg:self-start">
                     <p className="text-[0.65rem] uppercase tracking-[0.3em] text-slate-500">
                       Stack
                     </p>

@@ -71,6 +71,7 @@ const useAnimationLoop = (
   isHovered,
   hoverSpeed,
   isVertical,
+  shouldReduceMotion,
 ) => {
   const rafRef = useRef(null);
   const lastTimestampRef = useRef(null);
@@ -88,6 +89,12 @@ const useAnimationLoop = (
       track.style.transform = isVertical
         ? `translate3d(0, ${-offsetRef.current}px, 0)`
         : `translate3d(${-offsetRef.current}px, 0, 0)`;
+    }
+
+    if (shouldReduceMotion) {
+      lastTimestampRef.current = null;
+      velocityRef.current = 0;
+      return undefined;
     }
 
     const animate = (timestamp) => {
@@ -124,7 +131,48 @@ const useAnimationLoop = (
       }
       lastTimestampRef.current = null;
     };
-  }, [targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical, trackRef]);
+  }, [
+    targetVelocity,
+    seqWidth,
+    seqHeight,
+    isHovered,
+    hoverSpeed,
+    isVertical,
+    shouldReduceMotion,
+    trackRef,
+  ]);
+};
+
+const useReducedLoopMotion = () => {
+  const [shouldReduceMotion, setShouldReduceMotion] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return undefined;
+
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
+    const reducedQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setShouldReduceMotion(mobileQuery.matches || reducedQuery.matches);
+    const bind = (query) => {
+      if (query.addEventListener) {
+        query.addEventListener("change", update);
+        return () => query.removeEventListener("change", update);
+      }
+
+      query.addListener(update);
+      return () => query.removeListener(update);
+    };
+
+    update();
+    const removeMobile = bind(mobileQuery);
+    const removeReduced = bind(reducedQuery);
+
+    return () => {
+      removeMobile();
+      removeReduced();
+    };
+  }, []);
+
+  return shouldReduceMotion;
 };
 
 export const LogoLoop = memo(
@@ -153,6 +201,7 @@ export const LogoLoop = memo(
     const [seqHeight, setSeqHeight] = useState(0);
     const [copyCount, setCopyCount] = useState(ANIMATION_CONFIG.MIN_COPIES);
     const [isHovered, setIsHovered] = useState(false);
+    const shouldReduceMotion = useReducedLoopMotion();
 
     const effectiveHoverSpeed = useMemo(() => {
       if (hoverSpeed !== undefined) return hoverSpeed;
@@ -217,6 +266,7 @@ export const LogoLoop = memo(
       isHovered,
       effectiveHoverSpeed,
       isVertical,
+      shouldReduceMotion,
     );
 
     const cssVariables = useMemo(
