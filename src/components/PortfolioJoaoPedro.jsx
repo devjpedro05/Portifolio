@@ -228,9 +228,11 @@ export default function PortfolioJoaoPedro() {
     <div ref={rootRef} className="relative isolate min-h-screen overflow-x-clip text-slate-100">
       {showIntro ? <IntroLoader onReveal={releaseHero} onDone={() => setShowIntro(false)} /> : null}
 
-      <div className="page-backdrop" aria-hidden="true" />
-      <CircuitBackground />
-      <div className="page-vignette" aria-hidden="true" />
+      <div className="page-scenery" aria-hidden="true">
+        <div className="page-backdrop" />
+        <CircuitBackground />
+        <div className="page-vignette" />
+      </div>
       <div className="cursor-glow" aria-hidden="true" />
 
       <SiteHeader navItems={navItems} activeSection={activeSection} />

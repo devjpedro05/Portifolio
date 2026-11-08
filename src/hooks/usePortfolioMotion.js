@@ -22,7 +22,9 @@ const buildHeroTimeline = ({ isMobile }) => {
     .fromTo(
       title.chars,
       { autoAlpha: 0, yPercent: 115, rotateX: isMobile ? 0 : -85, transformOrigin: "50% 100%" },
-      { autoAlpha: 1, yPercent: 0, rotateX: 0, duration: 1, stagger: 0.03 },
+      // no fim volta ao texto normal (sem uma caixa por letra), o que deixa o nome
+      // limpo para leitores de tela e para ferramentas que recriam a página
+      { autoAlpha: 1, yPercent: 0, rotateX: 0, duration: 1, stagger: 0.03, onComplete: () => title.revert() },
       0.1,
     )
     .fromTo(".hero-role", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 }, 0.5)
