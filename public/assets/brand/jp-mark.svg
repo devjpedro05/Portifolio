@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="462 36 552 590" fill="none" role="img" aria-label="JP">
+  <defs>
+    <linearGradient id="jpFill" x1="480" y1="180" x2="960" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00F0FF"/>
+      <stop offset="1" stop-color="#0057FF"/>
+    </linearGradient>
+    <linearGradient id="jpLine" x1="480" y1="60" x2="990" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00E5FF"/>
+      <stop offset="1" stop-color="#0A5BFF"/>
+    </linearGradient>
+  </defs>
+  <g stroke="url(#jpLine)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M486 362V190L559 149"/>
+    <path d="M585 134L731 52L893 144"/>
+    <path d="M981 328V424"/>
+    <path d="M979 452L975 486L746 591"/>
+    <path d="M572 536L719 592"/>
+    <circle cx="572" cy="141" r="14"/>
+    <circle cx="981" cy="438" r="14"/>
+    <circle cx="733" cy="598" r="14"/>
+  </g>
+  <g fill="url(#jpFill)">
+    <path d="M607 236L668 172H742V400C742 462 694 505 628 505H562C516 505 478 472 478 432L558 386V436H622C646 436 662 420 662 396V236Z"/>
+    <path d="M748 172H860C918 172 960 224 960 288C960 352 918 405 860 405H798V492L748 520V340H878C900 340 905 314 905 288C905 262 900 236 878 236H748Z"/>
+  </g>
+  <g stroke="url(#jpFill)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M778 270L762 288L778 306"/>
+    <path d="M821 262L803 316"/>
+    <path d="M838 270L854 288L838 306"/>
+  </g>
+</svg>

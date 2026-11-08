@@ -2,12 +2,27 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta
       name="description"
-      content="Portfólio profissional de João Pedro Barros, desenvolvedor Full Stack e Desktop."
+      content="Portfólio profissional de João Pedro Barros, desenvolvedor de software Full Stack e Desktop."
     />
+    <meta name="theme-color" content="#00020d" />
+    <meta property="og:title" content="João Pedro Barros | Desenvolvedor de Software" />
+    <meta
+      property="og:description"
+      content="Sistemas web e desktop com React, TypeScript, .NET e PostgreSQL."
+    />
+    <link rel="icon" type="image/svg+xml" href="./assets/brand/jp-mark.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>João Pedro Barros | Portfólio</title>
+    <script>
+      // Esconde os elementos animados antes do primeiro paint só quando haverá animação.
+      if (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("motion-ok");
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

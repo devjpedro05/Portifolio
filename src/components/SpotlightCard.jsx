@@ -5,6 +5,7 @@ export default function SpotlightCard({
   children,
   className = "",
   spotlightColor = "rgba(34, 211, 238, 0.16)",
+  ...rest
 }) {
   const divRef = useRef(null);
 
@@ -25,6 +26,7 @@ export default function SpotlightCard({
       ref={divRef}
       onMouseMove={handleMouseMove}
       className={`card-spotlight ${className}`}
+      {...rest}
     >
       {children}
     </div>
